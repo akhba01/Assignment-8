@@ -39,6 +39,7 @@ func UserRegister(c *gin.Context) {
 		"id":        User.ID,
 		"email":     User.Email,
 		"full_name": User.Email,
+		"role":      User.Role,
 	})
 }
 
@@ -79,7 +80,7 @@ func UserLogin(c *gin.Context) {
 		return
 	}
 
-	token := helpers.GenerateToken(User.ID, User.Email)
+	token := helpers.GenerateToken(User.ID, User.Email, User.Role)
 
 	c.JSON(http.StatusOK, gin.H{
 		"token": token,
