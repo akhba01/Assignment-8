@@ -4,7 +4,18 @@ Content-Type: application/json
 
 {
     "full_name": "full name",
-    "email": "name1@gmail.com",
+    "email": "name3@gmail.com",
+    "password": "12345678",
+    "role" : "user"
+}
+
+# Register Admin
+POST http://localhost:8080/users/register
+Content-Type: application/json
+
+{
+    "full_name": "full name",
+    "email": "name4@gmail.com",
     "password": "12345678",
     "role" : "admin"
 }
@@ -14,13 +25,21 @@ POST http://localhost:8080/users/login
 Content-Type: application/json
 
 {
-    "email": "name@gmail.com",
+    "email": "name3@gmail.com",
     "password": "12345678"
 }
 
+# Login Admin
+POST http://localhost:8080/users/login
+Content-Type: application/json
+
+{
+    "email": "name4@gmail.com",
+    "password": "12345678"
+}
 # Insert Products
 POST http://localhost:8080/products
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZ21haWwuY29tIiwiaWQiOjF9.G3q2mVFty9HDLrIi011-tjWyukd4T98VkeW-7wF1FrU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWUzQGdtYWlsLmNvbSIsImlkIjo1LCJyb2xlIjoidXNlciJ9.MvrIAvDxihrKWS9LaFKgLeby3gCNe1Ub2LxNs7ALqa8
 Content-Type: application/json
 
 {
@@ -28,4 +47,22 @@ Content-Type: application/json
     "description": "bantal keren buatan rumah, silahkan dibeli"
 }
 
+# Get All Products
+GET http://localhost:8080/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWUzQGdtYWlsLmNvbSIsImlkIjo1LCJyb2xlIjoidXNlciJ9.MvrIAvDxihrKWS9LaFKgLeby3gCNe1Ub2LxNs7ALqa8
+Content-Type: application/json
 
+# Get Products By Id User
+GET http://localhost:8080/products/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWUzQGdtYWlsLmNvbSIsImlkIjo1LCJyb2xlIjoidXNlciJ9.MvrIAvDxihrKWS9LaFKgLeby3gCNe1Ub2LxNs7ALqa8
+Content-Type: application/json
+
+# Update Products Admin
+PUT http://localhost:8080/products/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWU0QGdtYWlsLmNvbSIsImlkIjo2LCJyb2xlIjoiYWRtaW4ifQ.J6_czX4syDo9gvHizCitpxKIHl6MCAbf-7Q1bwpPUZU
+Content-Type: application/json
+
+{
+    "title": "Bantal Keren Edited",
+    "description": "bantal keren buatan rumah, silahkan dibeli"
+}

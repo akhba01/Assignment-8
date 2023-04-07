@@ -13,6 +13,7 @@ import (
 
 func ReadProducts(ctx *gin.Context) {
 	db := database.GetDB()
+
 	var products []models.Product
 
 	if err := db.Find(&products).Error; err != nil {

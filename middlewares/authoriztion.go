@@ -13,7 +13,8 @@ import (
 func ProductAuthorization() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		db := database.GetDB()
-		productId, err := strconv.Atoi(ctx.Param("productId"))
+
+		productId, err := strconv.Atoi(ctx.Param("productID"))
 		if err != nil {
 			ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 				"error":   "Bad Request",
@@ -44,4 +45,19 @@ func ProductAuthorization() gin.HandlerFunc {
 		ctx.Next()
 	}
 
+}
+
+func AuthorizeProductAccessOnlyAdmin() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		userData := ctx.MustGet("userData").(jwt.MapClaims)
+		UserRole := userData["role"]
+		if UserRole != "admin" {
+			ctx.JSON(http.StatusUnauthorized, gin.H{
+				"error":   "Unauthorized",
+				"message": "Non admin user do not have permission to access this data",
+			})
+			ctx.Abort()
+			return
+		}
+	}
 }
