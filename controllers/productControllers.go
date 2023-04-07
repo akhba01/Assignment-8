@@ -11,7 +11,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func readProductsHandler(ctx *gin.Context) {
+func ReadProducts(ctx *gin.Context) {
 	db := database.GetDB()
 	var products []models.Product
 
@@ -26,7 +26,22 @@ func readProductsHandler(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"products": products,
 	})
+}
 
+func ReadProductByID(ctx *gin.Context) {
+	db := database.GetDB()
+	var products models.Product
+
+	if err := db.Where("id= ?", ctx.Param("productID")).First(&products).Error; err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{
+		"products": products,
+	})
 }
 
 func CreateProduct(ctx *gin.Context) {
