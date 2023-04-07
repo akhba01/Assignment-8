@@ -1,0 +1,30 @@
+# Register User
+POST http://localhost:8080/users/register
+Content-Type: application/json
+
+{
+    "full_name": "full name",
+    "email": "name1@gmail.com",
+    "password": "12345678"
+}
+
+# Login User
+POST http://localhost:8080/users/login
+Content-Type: application/json
+
+{
+    "email": "name@gmail.com",
+    "password": "12345678"
+}
+
+# Insert Products
+POST http://localhost:8080/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZ21haWwuY29tIiwiaWQiOjF9.G3q2mVFty9HDLrIi011-tjWyukd4T98VkeW-7wF1FrU
+Content-Type: application/json
+
+{
+    "title": "Bantal Keren",
+    "description": "bantal keren buatan rumah, silahkan dibeli"
+}
+
+
