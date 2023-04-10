@@ -4,6 +4,7 @@ import (
 	"assignment8/database"
 	"assignment8/helpers"
 	"assignment8/models"
+	"encoding/json"
 	"net/http"
 	"strconv"
 
@@ -23,9 +24,9 @@ func ReadProducts(ctx *gin.Context) {
 		})
 		return
 	}
-
+	json, _ := json.MarshalIndent(products, "", " ")
 	ctx.JSON(http.StatusOK, gin.H{
-		"products": products,
+		"product": json,
 	})
 }
 

@@ -66,3 +66,13 @@ Content-Type: application/json
     "title": "Bantal Keren Edited",
     "description": "bantal keren buatan rumah, silahkan dibeli"
 }
+
+# Get Products By Id Admin
+GET http://localhost:8080/products/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWUzQGdtYWlsLmNvbSIsImlkIjo1LCJyb2xlIjoidXNlciJ9.MvrIAvDxihrKWS9LaFKgLeby3gCNe1Ub2LxNs7ALqa8
+Content-Type: application/json
+
+# Get All Products Admin
+GET http://localhost:8080/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWU0QGdtYWlsLmNvbSIsImlkIjo2LCJyb2xlIjoiYWRtaW4ifQ.J6_czX4syDo9gvHizCitpxKIHl6MCAbf-7Q1bwpPUZU
+Content-Type: application/json

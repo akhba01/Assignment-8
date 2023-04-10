@@ -22,6 +22,7 @@ func ProductAuthorization() gin.HandlerFunc {
 			})
 			return
 		}
+
 		userData := ctx.MustGet("userData").(jwt.MapClaims)
 		userID := uint(userData["id"].(float64))
 		Product := models.Product{}
